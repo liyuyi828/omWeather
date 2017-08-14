@@ -11,14 +11,9 @@ export default class App extends Component {
     }
   }
 
-  componentDidMount(){
-    // getWeather()
-  }
-
   handleSearchInputChange(e){
     this.setState({searchInput: e.target.value})
   }
-
 
   getWeather(){
     getWeather(this.state.searchInput, this.showWeather.bind(this), this.showForecast.bind(this))
@@ -48,8 +43,8 @@ export default class App extends Component {
         {this.state.currentWeather ? 
           <CurrentWeather currentWeather={this.state.currentWeather}/>
           : null}
-        {this.state.forcast ? 
-          <Forecast forcast={this.state.forcast} />
+        {this.state.forecast ? 
+          <Forecast forecast={this.state.forecast} />
           : null}
       </div>
       )
