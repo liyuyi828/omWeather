@@ -3,18 +3,22 @@ import {key} from './apiKey'
 
 const openWeather = 'https://api.openweathermap.org/data/2.5'
 
-let getWeather = function (city) {
-  let url = openWeather+'/weather'
-  axios.get(url, {
+let getWeather = function (city, currentWeatherCallback, forcastCallback) {
+  let urlWeather = openWeather+'/weather'
+  let urlForcast = openWeather+'/forecast'
+  let query = {
     params: {
       q: city,
       APPID: key
     }
-  }).then(response => {
+  }
+  axios.get(urlWeather, query).then(response => {
     console.log(response.data)
+    currentWeatherCallback(response.data)
   })
-  .catch(error => {
-    console.log(error)
+  axios.get(urlForcast, query).then(response => {
+    console.log(response.data)
+    forcastCallback(response.data.list)
   })
 }
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {getWeather} from './api/getWeather'
+import CurrentWeather from './CurrentWeather'
+import Forecast from './Forecast'
 
 export default class App extends Component {
   constructor(){
@@ -19,12 +21,20 @@ export default class App extends Component {
 
 
   getWeather(){
-    getWeather(this.state.searchInput, this.showWeather.bind(this))
+    getWeather(this.state.searchInput, this.showWeather.bind(this), this.showForecast.bind(this))
     this.setState({searchInput: ''})
   }
 
   showWeather(data){
+    console.log('currentWeather got called')
     this.setState({currentWeather: data})
+  }
+
+  showForecast(list){
+    console.log('forecast got called')
+    let sortedList = list.sort((a, b) => a.dt - b.dt)
+    console.log(sortedList)
+    this.setState({forecast: sortedList})
   }
 
   render(){
@@ -39,7 +49,7 @@ export default class App extends Component {
           <CurrentWeather currentWeather={this.state.currentWeather}/>
           : null}
         {this.state.forcast ? 
-          <Forcast forcast={this.state.forcast} />
+          <Forecast forcast={this.state.forcast} />
           : null}
       </div>
       )
