@@ -5,7 +5,7 @@ module.exports = {
   context: __dirname,
   entry: "./index.js",
   output: {
-    path: __dirname,
+    path: __dirname + '/dist',
     filename: "app.bundle.js"
   },
   plugins: [

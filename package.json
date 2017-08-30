@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "prestart": "webpack --watch",
-    "start": "nodemon server.js"
+    "prestart": "webpack",
+    "start": "node server.js",
+    "dev:start": "nodemon server.js",
+    "dev:webpack": "webpack --watch",
+    "dev:fullstart": "npm run dev:start & npm run dev:webpack"
   },
   "repository": {
     "type": "git",

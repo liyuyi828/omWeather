@@ -8,14 +8,14 @@ export default class Forecast extends Component {
 
   componentDidMount() {
     if (this.props.forecast !== undefined && this.props.forecast.length > 0) {
-      // console.log('this shit got called')
+      console.log('data update on mounted')
       this.renderChart()
     }
   }
 
   componentDidUpdate() {
     if (this.props.forecast !== undefined && this.props.forecast.length > 0) {
-      // console.log('this crab got called')
+      console.log('data update on updated')
       this.renderChart()
     }
   }
